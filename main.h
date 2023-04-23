@@ -13,9 +13,17 @@ void handle_string(va_list *arg_list, int *chars_printed);
 void handle_percent(va_list *arg_list, int *chars_printed);
 
 /* Structs Variables*/
-typedef struct conversion_handler {
-    char specifier;
-    void (*handler)(va_list *, int *);
+
+
+/**
+*struct conversion_handler - struct for conversion
+*@specifier: the format specifier
+*@handler: pointer to function that handles printing format
+*/
+typedef struct conversion_handler
+{
+char specifier;
+void (*handler)(va_list *, int *);
 } conversion_handler;
 
 
