@@ -6,22 +6,22 @@
  */
 int _printf(const char *format, ...)
 {
-int chars_printed = 0;
-va_list arg_list;
-va_start(arg_list, format);
-
 conversion_handler handlers[] = {
 {'c', handle_char},
 {'s', handle_string},
 {'%', handle_percent},
 };
+size_t i;
+int chars_printed = 0;
+va_list arg_list;
+va_start(arg_list, format);
 
 while (*format != '\0')
 {
 if (*format == '%')
 {
 format++;
-for (size_t i = 0; i < sizeof(handlers) / sizeof(handlers[0]); i++)
+for (i = 0; i < sizeof(handlers) / sizeof(handlers[0]); i++)
 {
 if (*format == handlers[i].specifier)
 {
