@@ -2,7 +2,7 @@
 /**
  * _printf - print function
  * @format: format of the printf function
- * Return : return to the character printed
+ * Return: return to the character printed
  */
 int _printf(const char *format, ...)
 {
@@ -10,6 +10,7 @@ conversion_handler handlers[] = {
 {'c', handle_char},
 {'s', handle_string},
 {'%', handle_percent},
+{0, NULL},
 };
 size_t i;
 int chars_printed = 0;
@@ -25,7 +26,7 @@ for (i = 0; i < sizeof(handlers) / sizeof(handlers[0]); i++)
 {
 if (*format == handlers[i].specifier)
 {
-handlers[i].handler(&arg_list, &chars_printed, NULL);
+handlers[i].handler(&arg_list, &chars_printed);
 break;
 }
 }
