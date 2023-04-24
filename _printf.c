@@ -38,7 +38,6 @@ chars_printed++;
 }
 format++;
 }
-
 va_end(arg_list);
 return (chars_printed);
 }
