@@ -7,13 +7,11 @@
 #include <unistd.h>
 
 /* Functions Prototypes*/
-int _printf(const char *format, ...);
-void handle_char(va_list *arg_list, int *chars_printed);
-void handle_string(va_list *arg_list, int *chars_printed);
-void handle_percent(va_list *arg_list, int *chars_printed);
+void print_char(va_list arg_list, int *chars_printed);
+void print_string(va_list arg_list, int *chars_printed);
+void print_percent(va_list arg_list, int *chars_printed);
 
 /* Structs Variables*/
-
 
 /**
 *struct conversion_handler - struct for conversion
@@ -28,3 +26,4 @@ void (*handler)(va_list *, int *);
 
 
 #endif /*MAIN_H*/
+
