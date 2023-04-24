@@ -6,27 +6,31 @@
  */
 int _printf(const char *format, ...)
 {
-conversion_handler handlers[] = {
-{'c', handle_char},
-{'s', handle_string},
-{'%', handle_percent},
-{0, NULL},
-};
-size_t i;
 int chars_printed = 0;
 va_list arg_list;
 va_start(arg_list, format);
 
-while (*format != '\0')
+while (format && *format != '\0')
 {
 if (*format == '%')
 {
 format++;
-for (i = 0; i < sizeof(handlers) / sizeof(handlers[0]); i++)
+if (*format != '\0')
 {
-if (*format == handlers[i].specifier)
+switch (*format)
 {
-handlers[i].handler(&arg_list, &chars_printed);
+case 'c':
+print_char(arg_list, &chars_printed);
+break;
+case 's':
+print_string(arg_list, &chars_printed);
+break;
+case '%':
+print_percent(arg_list, &chars_printed);
+break;
+default:
+write(1, format - 1, 2);
+chars_printed += 2;
 break;
 }
 }
