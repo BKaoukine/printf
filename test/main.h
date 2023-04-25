@@ -7,7 +7,10 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <limits.h>
-
+#include <limits.h>
+#include <stdio.h>
+#include "main.h"
+#include <stdlib.h>
 /* Functions Prototypes*/
 int _printf(const char *format, ...);
 int print_space(__attribute__((unused)) va_list args, const char *format);
