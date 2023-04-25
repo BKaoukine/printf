@@ -15,7 +15,7 @@ if (str == NULL)
 {
 for (i = 0; *(null + i) != '\0'; i++)
 {
-putchar(*(null + i));
+_putchar(*(null + i));
 count++;
 }
 }
@@ -23,7 +23,7 @@ else
 {
 for (i = 0; str[i] != '\0'; i++)
 {
-putchar(str[i]);
+_putchar(str[i]);
 count++;
 }
 }
@@ -39,6 +39,6 @@ return (count);
 int print_char(va_list args)
 {
 char c = va_arg(args, int);
-putchar(c);
+_putchar(c);
 return (1);
 }

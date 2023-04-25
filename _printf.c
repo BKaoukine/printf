@@ -33,15 +33,15 @@ case ' ':
 count += print_space(args, &format[i]);
 break;
 default:
-putchar('%');
-putchar(format[i]);
+_putchar('%');
+_putchar(format[i]);
 count += 2;
 break;
 }
 }
 else
 {
-putchar(format[i]);
+_putchar(format[i]);
 count++;
 }
 }

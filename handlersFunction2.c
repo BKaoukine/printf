@@ -7,7 +7,7 @@
  */
 int print_percent(va_list args __attribute__((unused)))
 {
-putchar('%');
+_putchar('%');
 return (1);
 }
 
@@ -23,11 +23,11 @@ int print_space(__attribute__((unused)) va_list args, const char *format)
 {
 int count = 0;
 
-putchar(' ');
+_putchar(' ');
 count++;
 while (*(format + 1) == ' ')
 {
-putchar(' ');
+_putchar(' ');
 count++;
 format++;
 }
