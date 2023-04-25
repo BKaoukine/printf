@@ -1,3 +1,4 @@
+
 #ifndef MAIN_H
 #define MAIN_H
 
@@ -9,12 +10,12 @@
 
 /* Functions Prototypes*/
 int _printf(const char *format, ...);
-void print_char(va_list arg_list, int *chars_printed);
-void print_string(va_list arg_list, int *chars_printed);
-void print_percent(va_list arg_list, int *chars_printed);
+int print_space(__attribute__((unused)) va_list args, const char *format);
+int print_percent(va_list args __attribute__((unused)));
+int print_char(va_list args);
+int print_string(va_list args);
 
 /* Structs Variables*/
 
 
 #endif /*MAIN_H*/
-
