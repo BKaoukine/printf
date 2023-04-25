@@ -19,7 +19,6 @@ else
 {
 u = n;
 }
-
 if (u / 10)
 count += _printint(u / 10);
 
