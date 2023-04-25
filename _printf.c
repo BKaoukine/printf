@@ -40,10 +40,8 @@ break;
 }
 }
 else
-{
 _putchar(format[i]);
 count++;
-}
 }
 va_end(args);
 return (count);
