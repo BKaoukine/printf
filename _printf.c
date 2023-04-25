@@ -1,47 +1,90 @@
 #include "main.h"
 /**
- * _printf - print function
- * @format: format of the printf function
- * Return: return to the character printed
+ * _printf - custom implementation of printf function
+ * @format: format string to print
+ *
+ * Return: number of characters printed
  */
 int _printf(const char *format, ...)
 {
-int chars_printed = 0;
-va_list arg_list;
-va_start(arg_list, format);
+    char *null = "(null)";
+    
+    if (format == NULL)
+        return (-1);
 
-while (format && *format != '\0')
-{
-if (*format == '%')
-{
-format++;
-if (*format != '\0')
-{
-switch (*format)
-{
-case 'c':
-print_char(arg_list, &chars_printed);
-break;
-case 's':
-print_string(arg_list, &chars_printed);
-break;
-case '%':
-print_percent(arg_list, &chars_printed);
-break;
-default:
-write(1, format - 1, 2);
-chars_printed += 2;
-break;
-}
-}
-}
-else
-{
-write(1, format, 1);
-chars_printed++;
-}
-format++;
-}
-va_end(arg_list);
-return (chars_printed);
+    va_list args;
+    va_start(args, format);
+    int count = 0;
+
+    while (*format)
+    {
+        if (*format == '%')
+        {
+            format++;
+
+            if (*format == '\0')
+                return (-1);
+
+            switch (*format)
+            {
+                case 's':
+                {
+                    char *str = va_arg(args, char*);
+                    int i , j;
+                    if (str == NULL)
+                    {
+            			for (j = 0; *(null + j) != '\0'; j++)
+            			{
+            				putchar(*(null + j));
+            				count++;
+            			}
+                    }
+                   else
+                   {
+               			for (i = 0; str[i] != '\0'; i++)
+            			{
+            				putchar(str[i]);
+                            count++;
+            			}
+
+                   }
+                    break;
+                }
+                case 'c':
+                {
+                    char c = (char)va_arg(args, int);
+                    putchar(c);
+                    count++;
+                    break;
+                }
+                case '%':
+                    putchar('%');
+                    count++;
+                    break;
+                case ' ':
+                    putchar(' ');
+                    count++;
+                    while (*(format+1) == ' ')
+                    {
+                        format++;
+                    }
+                    break;
+                default:
+                    putchar('%');
+                    putchar(*format);
+                    count += 2;
+                    break;
+            }
+        }
+        else
+        {
+            putchar(*format);
+            count++;
+        }
+
+        format++;
+    }
+
+    va_end(args);
+    return count;
 }
