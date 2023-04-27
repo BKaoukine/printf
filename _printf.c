@@ -12,9 +12,9 @@ if (format == NULL)
 return (-1);
 va_start(args, format);
 for (i = 0; format[i] != '\0'; i++)
-{if (format[i] == '%')
 {
-i++;
+if (format[i] == '%')
+{i++;
 if (format[i] == '\0')
 return (-1);
 switch (format[i])
