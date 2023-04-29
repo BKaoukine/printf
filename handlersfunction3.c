@@ -4,7 +4,7 @@
  * @n: integer to print
  * Return: number of digits printed
  */
-static int _printint(int n)
+int _printint(int n)
 {
 unsigned int u;
 int count = 0;
